@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const problem = generateProblem();
   const guessHistory = document.querySelector('#guess-history');
   const answerBox = document.querySelector('#answer-box');
   const question = document.querySelector('#question');
+  question.innerHTML = `${problem.a} &times; ${problem.b}`;
   answerBox.addEventListener('keyup', (event) => {
     if (event.key === "Enter") {
       const value = event.target.value;
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function onSubmit(value) {
-    if (value === (6).toString()) {
+    if (value === (problem.product).toString()) {
       console.log("Ready for the next level");
       return;
     }
@@ -30,6 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyText = `${question.textContent} ≠ ${value}`;
     entry.textContent = historyText;
     guessHistory.appendChild(entry);
+  }
+
+  function generateProblem() {
+    return {
+      a: 2,
+      b: 3,
+      product: 6
+    }
   }
 });
 
