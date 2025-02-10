@@ -12,16 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function onSubmit(value) {
+    const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
+    answerBox.value = '';
     if (value === (problem.product).toString()) {
-      console.log("Ready for the next level");
+      guessIndicators.forEach(x => x.checked = false);
+      window.location.reload();
       return;
     }
     addGuessToHistory(value);
-    const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
     const lastGuess = guessIndicators.filter(x => !x.checked).length <= 1;
     const availableGuess = guessIndicators.find(x => !x.checked);
-    availableGuess.checked = true;
-    answerBox.value = '';
+    if (availableGuess) {
+      availableGuess.checked = true;
+    }
     if (lastGuess) {
       answerBox.value = 6;
     }
@@ -35,11 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateProblem() {
-    return {
-      a: 2,
-      b: 3,
-      product: 6
-    }
+    const a = randomBetween(3, 10);
+    const b = randomBetween(3, 10);
+    return { a, b, product: a * b }
+  }
+
+  function randomBetween(low, high) {
+    const range = high - low;
+    return Math.round(low + (Math.random() * range));
   }
 });
 
