@@ -5,8 +5,20 @@
 </head>
 <body>
   <script src='./script.js'></script>
-  <section class='game'>
-    <div>2 &times; 3 = <input type="number" id="answer-box"></input></div>
+  <section id='guess-history'>
+  </section>
+  <section id='game'>
+    <div><span id="question">2 &times; 3</span> = <input type="number" id="answer-box"></input></div>
+  </section>
+  <section id='guess-summary'>
+    <div>
+      <input type="radio" disabled/>
+      <input type="radio" disabled/>
+      <input type="radio" disabled/>
+      <input type="radio" disabled/>
+      <input type="radio" disabled/>
+      <input type="radio" disabled/>
+    </div>
   </section>
 </body>
 </html>
