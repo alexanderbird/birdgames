@@ -4,10 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const answerBox = document.querySelector('#answer-box');
   const question = document.querySelector('#question');
   const submitButton = document.querySelector('#submit-button');
+  const dotContainer = document.querySelector('#dots');
   question.innerHTML = `${problem.a} &times; ${problem.b}`;
   submitButton.addEventListener('click', (event) => {
       onSubmit(answerBox.value);
   });
+  for (let row = 0; row < problem.a; row++) {
+    const dotRowContainer = document.createElement('div');
+    dotRowContainer.classList.add('dots__dot-row');
+    dotContainer.appendChild(dotRowContainer);
+    for (let column = 0; column < problem.b; column++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dots__dot');
+      dotRowContainer.appendChild(dot);
+    }
+  }
 
   function onSubmit(value) {
     if (!value) {

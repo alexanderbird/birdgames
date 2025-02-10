@@ -28,3 +28,28 @@ input {
 #guess-summary input {
   zoom: 4;
 }
+
+#dots {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.dots__dot-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dots__dot {
+  background-color: black;
+  border-radius: 100%;
+  --dot-size: 36px;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin: calc(0.5 * var(--dot-size));
+}
