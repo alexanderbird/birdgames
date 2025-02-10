@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function generateProblem() {
     const a = randomBetween(2, 5);
-    const b = randomBetween(2, 5);
+    const b = randomBetween(2, 7);
     return { a, b, product: a * b }
   }
 
