@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
       onSubmit(value);
     }
   });
+  answerBox.addEventListener('focusout', (event) => {
+    const value = event.target.value;
+    onSubmit(value);
+  });
 
   function onSubmit(value) {
     const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
