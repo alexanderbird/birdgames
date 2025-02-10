@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function onSubmit(value) {
     const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
-    answerBox.value = '';
     if (value === (problem.product).toString()) {
       guessIndicators.forEach(x => x.checked = false);
       window.location.reload();
+      answerBox.value = '';
       return;
     }
     addGuessToHistory(value);
@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
       availableGuess.checked = true;
     }
     if (lastGuess) {
-      answerBox.value = 6;
+      answerBox.value = problem.product;
+    } else {
+      answerBox.value = '';
     }
   }
 
@@ -38,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateProblem() {
-    const a = randomBetween(3, 10);
-    const b = randomBetween(3, 10);
+    const a = randomBetween(2, 5);
+    const b = randomBetween(2, 5);
     return { a, b, product: a * b }
   }
 
