@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function onSubmit(value) {
+    if (value === (6).toString()) {
+      console.log("Ready for the next level");
+      return;
+    }
     addGuessToHistory(value);
     const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
     const lastGuess = guessIndicators.filter(x => !x.checked).length <= 1;
