@@ -3,19 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const guessHistory = document.querySelector('#guess-history');
   const answerBox = document.querySelector('#answer-box');
   const question = document.querySelector('#question');
+  const submitButton = document.querySelector('#submit-button');
   question.innerHTML = `${problem.a} &times; ${problem.b}`;
-  answerBox.addEventListener('keyup', (event) => {
-    if (event.key === "Enter") {
-      const value = event.target.value;
-      onSubmit(value);
-    }
-  });
-  answerBox.addEventListener('focusout', (event) => {
-    const value = event.target.value;
-    onSubmit(value);
+  submitButton.addEventListener('click', (event) => {
+      onSubmit(answerBox.value);
   });
 
   function onSubmit(value) {
+    if (!value) {
+      return;
+    }
     const guessIndicators = Array.from(document.querySelectorAll('#guess-summary input[type="radio"]'));
     if (value === (problem.product).toString()) {
       guessIndicators.forEach(x => x.checked = false);

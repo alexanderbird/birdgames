@@ -7,6 +7,24 @@ body {
   min-height: 100vh;
 }
 
+button,
 input {
   font-size: inherit;
+}
+
+
+#answer-box {
+  width: 6em;
+}
+
+#submit-button {
+ width: 4em;
+}
+
+#guess-summary {
+  margin-bottom: 24px;
+}
+
+#guess-summary input {
+  zoom: 4;
 }
